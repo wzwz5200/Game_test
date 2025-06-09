@@ -4,6 +4,7 @@
 #include "Tools.h"
 #include "XorStr.h"
 #include "offset.h"
+#include "hack.h"
 UINT64 MainModule;
 
 int main()
@@ -73,15 +74,14 @@ int main()
     }
 
     printf("[+] Header data: 0x%p\n", reinterpret_cast<void*>(header));
-
-
-    InitDecrypt(MainModule, SDK::XenuineDecrypt);
     uint64_t baseAddress = GetModule(targetProcessId, L"TslGame.exe"); // 获取模块基址
-    uint64_t encryptedUWorld = HV::Read<uint64_t>(baseAddress + SDK::GWorld);
+    //初始化
+    Cheat Cheat(MainModule, baseAddress);
 
-    uint64_t UWorld = Decrypt(encryptedUWorld);
 
-    std::cout << "Uworld : " << UWorld << std::endl;
+    getchar();
+
+
 
 
 

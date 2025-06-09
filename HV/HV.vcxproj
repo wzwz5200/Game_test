@@ -130,13 +130,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ActorEntity.cpp" />
+    <ClCompile Include="hack.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Tools.cpp" />
     <ClCompile Include="XorStr.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ActorEntity.h" />
+    <ClInclude Include="hack.h" />
     <ClInclude Include="HV.h" />
     <ClInclude Include="offset.h" />
+    <ClInclude Include="Struct.h" />
     <ClInclude Include="Tools.h" />
     <ClInclude Include="XorStr.h" />
   </ItemGroup>

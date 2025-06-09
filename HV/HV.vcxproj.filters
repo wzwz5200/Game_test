@@ -16,6 +16,12 @@
     <Filter Include="头文件\HV">
       <UniqueIdentifier>{c4ef3fed-0f30-4a3f-a478-a5a664a206e9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="HACK">
+      <UniqueIdentifier>{412e1ef4-165e-4b63-b26f-a47034ad8e2c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HACK\SDK">
+      <UniqueIdentifier>{6dce08ee-868b-4783-830d-6fd6e7f4cba7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -25,6 +31,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="XorStr.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="hack.cpp">
+      <Filter>HACK</Filter>
+    </ClCompile>
+    <ClCompile Include="ActorEntity.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -40,6 +52,15 @@
     </ClInclude>
     <ClInclude Include="offset.h">
       <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="hack.h">
+      <Filter>HACK</Filter>
+    </ClInclude>
+    <ClInclude Include="Struct.h">
+      <Filter>HACK\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="ActorEntity.h">
+      <Filter>HACK\SDK</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
