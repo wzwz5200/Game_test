@@ -1,4 +1,5 @@
 #include "ActorEntity.h"
+#include "offset.h"
 
 
 FMatrix FTransform::ToMatrixWithScale()
@@ -46,6 +47,26 @@ FMatrix FTransform::ToMatrixWithScale()
 	return m;
 }
 
+void GetIndex(Index& index)
+{
+	index.Head = 35;
+	index.neck = 5;
+	index.pelvis = 1;
+	index.Lshoulder = 88;
+	index.Lelbow = 89;
+	index.Lhand = 90;
+	index.Rshoulder = 115;
+	index.Relbow = 116;
+	index.Rhand = 117;
+	index.Lbuttock = 177;
+	index.Lknee = 173;
+	index.Lfoot = 174;
+	index.Rbuttock = 183;
+	index.Rknee = 179;
+	index.Rfoot = 180;
+
+}
+
 
 
 FMatrix FMatrix::MatrixMultiplication(const FMatrix& other)
@@ -70,4 +91,30 @@ FMatrix FMatrix::MatrixMultiplication(const FMatrix& other)
 	NewMatrix._44 = this->_41 * other._14 + this->_42 * other._24 + this->_43 * other._34 + this->_44 * other._44;
 
 	return NewMatrix;
+}
+
+ActorEntity::ActorEntity(uint64_t address)
+{
+	Class = address;
+	if (!address)
+		return;
+
+	//TargetProcess.AddScatterReadRequest(handle, Class + SDK.PlayerState, reinterpret_cast<void*>(&PlayerState), sizeof(uint64_t));
+	//TargetProcess.AddScatterReadRequest(handle, Class + SDK.AcknowledgedPawn, reinterpret_cast<void*>(&AcknowledgedPawn), sizeof(uint64_t));
+	//TargetProcess.AddScatterReadRequest(handle, Class + SDK.RootComponent, reinterpret_cast<void*>(&RootComponent), sizeof(uint64_t));
+	//TargetProcess.AddScatterReadRequest(handle, Class + SDK.Mesh, reinterpret_cast<void*>(&Mesh), sizeof(uint64_t));
+	//TargetProcess.AddScatterReadRequest(handle, Class + SDK.LastTeamNum, reinterpret_cast<void*>(&LastTeamNum), sizeof(uint64_t));
+
+	HV::ReadMemory(Class+ SDK::PlayerState, reinterpret_cast<ULONG64>(&PlayerState), sizeof(uint64_t));
+	HV::ReadMemory(Class + SDK::AcknowledgedPawn, reinterpret_cast<ULONG64>(&AcknowledgedPawn), sizeof(uint64_t));
+	HV::ReadMemory(Class + SDK::RootComponent, reinterpret_cast<ULONG64>(&RootComponent), sizeof(uint64_t));
+	HV::ReadMemory(Class + SDK::Mesh, reinterpret_cast<ULONG64>(&Mesh), sizeof(uint64_t));
+
+	HV::ReadMemory(Class + SDK::LastTeamNum, reinterpret_cast<ULONG64>(&LastTeamNum), sizeof(uint64_t));
+
+	GetIndex(index);
+}
+
+void ActorEntity::SetUp1()
+{
 }

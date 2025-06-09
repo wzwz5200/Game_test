@@ -2,6 +2,7 @@
 #include "Struct.h"
 #include <cstdint>
 #include <string>
+#include "HV.h"
 enum class EPlayerRole : uint8_t
 {
 	EPlayerRole__VE_None = 0,
@@ -75,5 +76,8 @@ public:
 	Index index{};
 	uint64_t PlayerState, RootComponent, MeshLastTeamNum, Mesh, LastTeamNum, BoneArray, AcknowledgedPawn, RelativeLocation;
 	FTransform ToWorld;
+
+	ActorEntity(uint64_t address);
+	void SetUp1();
 	
 };
