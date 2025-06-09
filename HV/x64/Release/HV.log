@@ -1,0 +1,5 @@
+﻿  main.cpp
+  Tools.cpp
+  XorStr.cpp
+Tools.obj : error LNK2001: 无法解析的外部符号 __imp_NtQueryVirtualMemory
+C:\Users\E1qas\source\repos\HV\x64\Release\HV.exe : fatal error LNK1120: 1 个无法解析的外部命令
