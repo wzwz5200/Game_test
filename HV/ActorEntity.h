@@ -3,6 +3,8 @@
 #include <cstdint>
 #include <string>
 #include "HV.h"
+#include "xor.h"
+#include "math_.h"
 enum class EPlayerRole : uint8_t
 {
 	EPlayerRole__VE_None = 0,
@@ -76,8 +78,18 @@ public:
 	Index index{};
 	uint64_t PlayerState, RootComponent, MeshLastTeamNum, Mesh, LastTeamNum, BoneArray, AcknowledgedPawn, RelativeLocation;
 	FTransform ToWorld;
+	std::wstring Name = LIT(L"Entity");
+	UEVector UEPosition;
+	Vector3 Position;
+
+	bool isCheck = FALSE;
+
 
 	ActorEntity(uint64_t address);
 	void SetUp1();
 	
+	void SetUp2();
+
+
+
 };

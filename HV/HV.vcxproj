@@ -133,6 +133,7 @@
     <ClCompile Include="ActorEntity.cpp" />
     <ClCompile Include="hack.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="math_.cpp" />
     <ClCompile Include="Tools.cpp" />
     <ClCompile Include="XorStr.cpp" />
   </ItemGroup>
@@ -140,9 +141,11 @@
     <ClInclude Include="ActorEntity.h" />
     <ClInclude Include="hack.h" />
     <ClInclude Include="HV.h" />
+    <ClInclude Include="math_.h" />
     <ClInclude Include="offset.h" />
     <ClInclude Include="Struct.h" />
     <ClInclude Include="Tools.h" />
+    <ClInclude Include="xor.h" />
     <ClInclude Include="XorStr.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

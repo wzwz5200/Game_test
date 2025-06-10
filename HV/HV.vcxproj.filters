@@ -39,6 +39,9 @@
     <ClCompile Include="ActorEntity.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="math_.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HV.h">
@@ -61,6 +64,12 @@
     </ClInclude>
     <ClInclude Include="ActorEntity.h">
       <Filter>HACK\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="xor.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="math_.h">
+      <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

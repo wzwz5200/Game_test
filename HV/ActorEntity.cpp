@@ -117,4 +117,56 @@ ActorEntity::ActorEntity(uint64_t address)
 
 void ActorEntity::SetUp1()
 {
+	if (!Class)
+		return;
+
+	if (!RootComponent)
+		return;
+	if (Mesh < 65535) {
+		return;
+	}
+	if (PlayerState) // players aren't pawns
+	{
+		HV::ReadMemory(Mesh + SDK::StaticMesh, reinterpret_cast<ULONG64>(&BoneArray), sizeof(BoneArray));
+		HV::ReadMemory(Mesh + SDK::ComponentToWorld, reinterpret_cast<ULONG64>(&ToWorld), sizeof(FTransform));
+	}
+
+}
+
+void ActorEntity::SetUp2()
+{
+
+
+	if (!Class)
+		isCheck = false; return;
+	if (!RootComponent)
+		isCheck = false;
+	return;
+	if (Mesh < 65535) {
+		isCheck = false;
+		return;
+	}
+
+	if (isCheck && PlayerState) // players aren't pawns
+	{
+		HV::ReadMemory(BoneArray + index.Head * 0x30, reinterpret_cast<ULONG64>(&Head), sizeof(FTransform));
+		HV::ReadMemory(BoneArray + index.neck * 0x30, reinterpret_cast<ULONG64>(&neck), sizeof(FTransform));
+		HV::ReadMemory(BoneArray + index.pelvis * 0x30, reinterpret_cast<ULONG64>(&pelvis), sizeof(FTransform));
+		HV::ReadMemory(BoneArray + index.Lshoulder * 0x30, reinterpret_cast<ULONG64>(&Lshoulder), sizeof(FTransform));
+		HV::ReadMemory(BoneArray + index.Lelbow * 0x30, reinterpret_cast<ULONG64>(&Lelbow), sizeof(FTransform));
+		HV::ReadMemory(BoneArray + index.Lhand * 0x30, reinterpret_cast<ULONG64>(&Lhand), sizeof(FTransform));
+		HV::ReadMemory(BoneArray + index.Rshoulder * 0x30, reinterpret_cast<ULONG64>(&Rshoulder), sizeof(FTransform));
+		HV::ReadMemory(BoneArray + index.Relbow * 0x30, reinterpret_cast<ULONG64>(&Relbow), sizeof(FTransform));
+		HV::ReadMemory(BoneArray + index.Rhand * 0x30, reinterpret_cast<ULONG64>(&Rhand), sizeof(FTransform));
+		HV::ReadMemory(BoneArray + index.Lbuttock * 0x30, reinterpret_cast<ULONG64>(&Lbuttock), sizeof(FTransform));
+		HV::ReadMemory(BoneArray + index.Lknee * 0x30, reinterpret_cast<ULONG64>(&Lknee), sizeof(FTransform));
+		HV::ReadMemory(BoneArray + index.Lfoot * 0x30, reinterpret_cast<ULONG64>(&Lfoot), sizeof(FTransform));
+		HV::ReadMemory(BoneArray + index.Rbuttock * 0x30, reinterpret_cast<ULONG64>(&Rbuttock), sizeof(FTransform));
+		HV::ReadMemory(BoneArray + index.Rknee * 0x30, reinterpret_cast<ULONG64>(&Rknee), sizeof(FTransform));
+		HV::ReadMemory(BoneArray + index.Rfoot * 0x30, reinterpret_cast<ULONG64>(&Rfoot), sizeof(FTransform));
+
+
+	}
+
+
 }

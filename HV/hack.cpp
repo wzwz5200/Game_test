@@ -26,6 +26,8 @@ Cheat::Cheat(UINT64 MainModule, uint64_t baseAddress)
 
    
 
+    for (int i = 0; i < 9999; i++)
+    {
 
         CameraEntry.POV.FOV = HV::Read<float>(PlayerCameraManager + SDK::CameraFov);
         CameraEntry.POV.Location = HV::Read<UEVector>(PlayerCameraManager + SDK::CameraPos);
@@ -33,6 +35,10 @@ Cheat::Cheat(UINT64 MainModule, uint64_t baseAddress)
 
         std::cout << "FOV : " << CameraEntry.POV.Rotation.Pitch << std::endl;
 
+        Sleep(64);
+
+
+    }
 
 
   
