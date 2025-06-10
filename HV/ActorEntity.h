@@ -84,12 +84,23 @@ public:
 
 	bool isCheck = FALSE;
 
-
+	
 	ActorEntity(uint64_t address);
 	void SetUp1();
 	
 	void SetUp2();
+	void SetUp3();
+
+	UEVector GetBoneMatrix(FTransform bone);
+
+	uint64_t GetClass();
 
 
+	int GetPlayerRole();
+	std::wstring GetName();
+
+	Vector3 GetPosition();
+	void UpdatePosition();
+	void UpdateBone();
 
 };

@@ -93,6 +93,7 @@ FMatrix FMatrix::MatrixMultiplication(const FMatrix& other)
 	return NewMatrix;
 }
 
+
 ActorEntity::ActorEntity(uint64_t address)
 {
 	Class = address;
@@ -132,6 +133,14 @@ void ActorEntity::SetUp1()
 	}
 
 }
+UEVector ActorEntity::GetBoneMatrix(FTransform bone)
+{
+	FMatrix Matrix;
+	Matrix = bone.ToMatrixWithScale().MatrixMultiplication(ToWorld.ToMatrixWithScale());
+	return UEVector(Matrix._41, Matrix._42, Matrix._43);
+}
+
+
 
 void ActorEntity::SetUp2()
 {
@@ -166,7 +175,99 @@ void ActorEntity::SetUp2()
 		HV::ReadMemory(BoneArray + index.Rfoot * 0x30, reinterpret_cast<ULONG64>(&Rfoot), sizeof(FTransform));
 
 
+
 	}
 
+
+}
+
+void ActorEntity::SetUp3()
+{
+	Head3D = GetBoneMatrix(Head);
+	neck3D = GetBoneMatrix(neck);
+	pelvis3D = GetBoneMatrix(pelvis);
+	Lshoulder3D = GetBoneMatrix(Lshoulder);
+	Lelbow3D = GetBoneMatrix(Lelbow);
+	Lhand3D = GetBoneMatrix(Lhand);
+	Rshoulder3D = GetBoneMatrix(Rshoulder);
+	Relbow3D = GetBoneMatrix(Relbow);
+	Rhand3D = GetBoneMatrix(Rhand);
+	Lbuttock3D = GetBoneMatrix(Lbuttock);
+	Lknee3D = GetBoneMatrix(Lknee);
+	Lfoot3D = GetBoneMatrix(Lfoot);
+	Rbuttock3D = GetBoneMatrix(Rbuttock);
+	Rknee3D = GetBoneMatrix(Rknee);
+	Rfoot3D = GetBoneMatrix(Rfoot);
+
+
+}
+
+
+
+int ActorEntity::GetPlayerRole()
+{
+	return PlayerRole;
+}
+
+uint64_t ActorEntity::GetClass()
+{
+	return Class;
+}
+
+std::wstring ActorEntity::GetName()
+{
+	return Name;
+}
+
+Vector3 ActorEntity::GetPosition()
+{
+	Position = Vector3(UEPosition.X, UEPosition.Y, UEPosition.Z);
+	return Position;
+}
+
+void ActorEntity::UpdatePosition()
+{
+	if (!Class)
+		return;
+	if (!RootComponent)
+		return;
+	if (!PlayerState)
+		return;
+	if (!AcknowledgedPawn || !isCheck) // players aren't pawns
+		return;
+	HV::ReadMemory(RootComponent + RelativeLocation, reinterpret_cast<ULONG64>(&UEPosition), sizeof(UEVector));
+
+}
+
+void ActorEntity::UpdateBone()
+{
+	if (!Class)
+		return;
+	if (!RootComponent)
+		return;
+	if (!PlayerState)
+		return;
+	if (!isCheck) // players aren't pawns
+		return;
+	if (Mesh < 65535) {
+		return;
+	}
+	HV::ReadMemory(Mesh + SDK::ComponentToWorld, reinterpret_cast<ULONG64>(&ToWorld), sizeof(FTransform));
+
+	HV::ReadMemory(BoneArray + index.Head * 0x30, reinterpret_cast<ULONG64>(&Head), sizeof(FTransform));
+	HV::ReadMemory(BoneArray + index.neck * 0x30, reinterpret_cast<ULONG64>(&neck), sizeof(FTransform));
+	HV::ReadMemory(BoneArray + index.pelvis * 0x30, reinterpret_cast<ULONG64>(&pelvis), sizeof(FTransform));
+	HV::ReadMemory(BoneArray + index.Lshoulder * 0x30, reinterpret_cast<ULONG64>(&Lshoulder), sizeof(FTransform));
+	HV::ReadMemory(BoneArray + index.Lelbow * 0x30, reinterpret_cast<ULONG64>(&Lelbow), sizeof(FTransform));
+	HV::ReadMemory(BoneArray + index.Lhand * 0x30, reinterpret_cast<ULONG64>(&Lhand), sizeof(FTransform));
+	HV::ReadMemory(BoneArray + index.Rshoulder * 0x30, reinterpret_cast<ULONG64>(&Rshoulder), sizeof(FTransform));
+	HV::ReadMemory(BoneArray + index.Relbow * 0x30, reinterpret_cast<ULONG64>(&Relbow), sizeof(FTransform));
+	HV::ReadMemory(BoneArray + index.Rhand * 0x30, reinterpret_cast<ULONG64>(&Rhand), sizeof(FTransform));
+	HV::ReadMemory(BoneArray + index.Lbuttock * 0x30, reinterpret_cast<ULONG64>(&Lbuttock), sizeof(FTransform));
+	HV::ReadMemory(BoneArray + index.Lknee * 0x30, reinterpret_cast<ULONG64>(&Lknee), sizeof(FTransform));
+	HV::ReadMemory(BoneArray + index.Lfoot * 0x30, reinterpret_cast<ULONG64>(&Lfoot), sizeof(FTransform));
+	HV::ReadMemory(BoneArray + index.Rbuttock * 0x30, reinterpret_cast<ULONG64>(&Rbuttock), sizeof(FTransform));
+	HV::ReadMemory(BoneArray + index.Rknee * 0x30, reinterpret_cast<ULONG64>(&Rknee), sizeof(FTransform));
+	HV::ReadMemory(BoneArray + index.Rfoot * 0x30, reinterpret_cast<ULONG64>(&Rfoot), sizeof(FTransform));
 
 }
