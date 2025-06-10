@@ -73,6 +73,7 @@ public:
 
 	uint64_t Class = 0;
 	int PlayerRole;
+	int id;
 	bool isDie = true;
 	int TempId;
 	Index index{};

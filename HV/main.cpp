@@ -75,10 +75,17 @@ int main()
 
     printf("[+] Header data: 0x%p\n", reinterpret_cast<void*>(header));
     uint64_t baseAddress = GetModule(targetProcessId, L"TslGame.exe"); // 获取模块基址
+
     //初始化
     Cheat Cheat(MainModule, baseAddress);
 
+   
 
+    for (int i = 0; i < 99999; i++)
+    {
+        Cheat.Cache();
+        Sleep(64);
+    }
     getchar();
 
 

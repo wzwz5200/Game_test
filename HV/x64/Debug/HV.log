@@ -1,2 +1,18 @@
 ﻿  ActorEntity.cpp
+  hack.cpp
+C:\Users\E1qas\source\repos\HV\HV\hack.cpp(55,38): warning C4244: “=”: 从“T”转换到“int”，可能丢失数据
+C:\Users\E1qas\source\repos\HV\HV\hack.cpp(55,38): warning C4244:         with
+C:\Users\E1qas\source\repos\HV\HV\hack.cpp(55,38): warning C4244:         [
+C:\Users\E1qas\source\repos\HV\HV\hack.cpp(55,38): warning C4244:             T=uint64_t
+C:\Users\E1qas\source\repos\HV\HV\hack.cpp(55,38): warning C4244:         ]
+C:\Users\E1qas\source\repos\HV\HV\hack.cpp(56,46): warning C4244: “=”: 从“T”转换到“int”，可能丢失数据
+C:\Users\E1qas\source\repos\HV\HV\hack.cpp(56,46): warning C4244:         with
+C:\Users\E1qas\source\repos\HV\HV\hack.cpp(56,46): warning C4244:         [
+C:\Users\E1qas\source\repos\HV\HV\hack.cpp(56,46): warning C4244:             T=uint64_t
+C:\Users\E1qas\source\repos\HV\HV\hack.cpp(56,46): warning C4244:         ]
+C:\Users\E1qas\source\repos\HV\HV\hack.cpp(105,16): warning C4244: “初始化”: 从“uint64_t”转换到“int”，可能丢失数据
+C:\Users\E1qas\source\repos\HV\HV\hack.cpp(110,20): warning C4477: “printf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“std::string”
+C:\Users\E1qas\source\repos\HV\HV\hack.cpp(171,16): warning C4091: “typedef ”: 没有声明变量时忽略“StringA”的左侧
+  main.cpp
+  正在生成代码...
   HV.vcxproj -> C:\Users\E1qas\source\repos\HV\x64\Debug\HV.exe

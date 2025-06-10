@@ -1,6 +1,18 @@
 #pragma once
 #include <intrin.h> // Include this header for intrinsic functions
 #include <cstdint>
+#include <map>
+#include <string>
+
+#include <map>
+
+struct _Local
+{
+	int Teamid;
+	int SpectatedCount;
+	bool reset;
+	std::map<int, std::string> KV;
+}inline Local;
 
 namespace SDK {
 	//Version 35.2.2.3
